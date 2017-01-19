@@ -3,8 +3,8 @@
 
 # Create a vector of 100 employees ("Employee 1", "Employee 2", ... "Employee 100)
 # Hint: use the `paste()` function to produce the list
-nums <- 1:100
-employees <- paste("Employee", nums)
+
+employees <- paste("Employee", 1:100)
 
 # Create a vector of 100 random salaries for the year 2014
 # Use the `runif()` function to pick a random number between 40000 and 50000
@@ -15,13 +15,14 @@ salaries.2014 <- runif(100, 40000, 50000)
 # Hint: use `runif()` to add a random number to 2014's salaries. Starting from a
 # _negative_ number so that salaries may decrease!
 
-change.vector <- runif(100, -500, 1000)
+change.vector <- runif(100, -5000, 10000)
 salaries.2015 <- change.vector+salaries.2014
 
 # Create a data.frame 'salaries' by combining the 3 vectors you just made
 # Remember to set `stringsAsFactors=FALSE`!
 
 employee.salaries <- data.frame(employees, salaries.2014, salaries.2015, stringsAsFactors = FALSE)
+View(employee.salaries)
 
 # Create a column 'raise' that stores the size of the raise between 2014 and 2015
 
@@ -30,9 +31,7 @@ employee.salaries$raise <- employee.salaries$salaries.2015-employee.salaries$sal
 
 # Create a column 'got.raise' that is TRUE if the person got a raise
 
-employee.salaries$got.raise <- employee.salaries$raise > 0
-
-print(employee.salaries)
+employee.salaries$got.raise <- (employee.salaries$raise > 0)  #vector of trues and falses
 
 
 ### Retrieve values from your data frame to answer the following questions
@@ -40,10 +39,13 @@ print(employee.salaries)
 ### cell rather than the whole row!)
 
 # What was the 2015 salary of employee 57
-employee.salaries[57, 3]
+employee.salaries[57, "salaries.2015"]
+
 
 # How many employees got a raise?
-nrow(employee.salaries[employee.salaries$got.raise==TRUE,])
+length(employee.salaries$got.raise[employee.salaries$got.raise])
+sum(employee.salaries$got.raise)
+nrow(employee.salaries[employee.salaries$got.raise,])
 
 # What was the value of the highest raise?
 

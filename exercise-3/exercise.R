@@ -15,6 +15,7 @@ is.data.frame(USPersonalExpenditure)
 # to the `data.frame()` function to convert it a data farm. Do this, storing the
 # result in a new variable
 x <- data.frame(USPersonalExpenditure)
+View(x)
 
 # What are the column names of your dataframe?
 
@@ -50,7 +51,6 @@ print(x)
 DetectHighest <- function(year){
   col <- paste0('X', year)
   return(x$category[x[,col] == max(x[, col])])
-  
 }
 
 # Using your function, determine the highest spending category of each year
